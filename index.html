@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clone do Spotify</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        /* Layout principal */
+        .app-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Barra lateral */
+        aside {
+            width: 240px;
+            background-color: #000000;
+            padding: 24px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            flex-shrink: 0;
+        }
+
+        aside h2 {
+            font-size: 24px;
+            color: #1ed760;
+            padding-left: 8px;
+        }
+
+        aside nav ul,
+        aside section ul {
+            list-style: none;
+        }
+
+        aside nav ul li,
+        aside section ul li {
+            padding: 10px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #b3b3b3;
+            cursor: default;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        aside nav ul li:hover,
+        aside section ul li:hover {
+            color: #ffffff;
+            background-color: #1f1f1f;
+        }
+
+        aside section h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #b3b3b3;
+            padding: 0 12px 8px 12px;
+        }
+
+        /* Conteúdo principal */
+        main {
+            flex: 1;
+            padding: 24px 32px;
+            overflow-y: auto;
+            background: linear-gradient(to bottom, #1f1f1f, #121212 200px);
+        }
+
+        main header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        main section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .playlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .playlist-card {
+            background-color: #181818;
+            padding: 16px;
+            border-radius: 8px;
+            transition: background 0.3s;
+            cursor: default;
+        }
+
+        .playlist-card:hover {
+            background-color: #282828;
+        }
+
+        .playlist-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .playlist-card p {
+            font-size: 14px;
+            color: #b3b3b3;
+        }
+
+        /* Rodapé / Player */
+        footer {
+            background-color: #181818;
+            border-top: 1px solid #282828;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        footer div p {
+            font-size: 14px;
+            color: #b3b3b3;
+        }
+
+        footer div:last-child p {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Responsivo */
+        @media (max-width: 700px) {
+            aside {
+                width: 180px;
+                padding: 16px 8px;
+            }
+            main {
+                padding: 16px;
+            }
+            .playlist-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+
+        @media (max-width: 500px) {
+            .app-container {
+                flex-direction: column;
+            }
+            aside {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 12px 16px;
+                gap: 8px 16px;
+            }
+            aside h2 {
+                font-size: 20px;
+            }
+            aside nav ul,
+            aside section ul {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+            aside nav ul li,
+            aside section ul li {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+            aside section {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            aside section h3 {
+                padding: 0;
+                font-size: 11px;
+            }
+            footer {
+                flex-direction: column;
+                gap: 6px;
+                padding: 12px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Barra lateral -->
+        <aside>
+            <h2>Spotify</h2>
+            <nav>
+                <ul>
+                    <li>Início</li>
+                    <li>Buscar</li>
+                    <li>Sua Biblioteca</li>
+                </ul>
+            </nav>
+            <section>
+                <h3>Playlists</h3>
+                <ul>
+                    <li>Minhas Músicas</li>
+                    <li>Favoritas</li>
+                    <li>Treino</li>
+                </ul>
+            </section>
+        </aside>
+
+        <!-- Conteúdo principal -->
+        <main>
+            <header>
+                <h1>Boa tarde</h1>
+            </header>
+            <section>
+                <h2>Playlists populares</h2>
+                <div class="playlist-grid">
+                    <div class="playlist-card">
+                        <h3>Top Brasil</h3>
+                        <p>As músicas mais ouvidas</p>
+                    </div>
+                    <div class="playlist-card">
+                        <h3>Pop Hits</h3>
+                        <p>Sucessos do momento</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Player / Rodapé -->
+    <footer>
+        <div>
+            <p>Música atual: Nenhuma</p>
+        </div>
+        <div>
+            <p>Controles: Play | Pause | Próxima</p>
+        </div>
+    </footer>
+
+</body>
+</html>
